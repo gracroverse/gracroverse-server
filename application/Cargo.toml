@@ -1,0 +1,8 @@
+[package]
+name = "gracroverse-server-application"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+gracroverse-server-domain = { path = "../domain" }
+gracroverse-server-adapter = { path = "../adapter" }

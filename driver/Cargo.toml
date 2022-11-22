@@ -1,0 +1,11 @@
+[package]
+name = "gracroverse-server-driver"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+gracroverse-server-domain = { path = "../domain" }
+gracroverse-server-application = { path = "../application" }
+gracroverse-server-adapter = { path = "../adapter" }
+tracing = "0.1.37"
+tracing-subscriber = "0.3.16"
