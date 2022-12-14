@@ -3,14 +3,18 @@ use std::net::SocketAddr;
 use anyhow::{Context as _, Result};
 use axum::{Extension, Router, Server};
 use gracroverse_server_driver::routes;
-use gracroverse_server_driver::startup::init_app;
+use gracroverse_server_driver::startup::load_config;
 use tower::ServiceBuilder;
 use tower_http::request_id::{MakeRequestUuid, PropagateRequestIdLayer, SetRequestIdLayer};
 use tower_http::trace::TraceLayer;
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let config = init_app()?;
+    let config = load_config()?;
+
+    tracing_subscriber::fmt()
+        .with_max_level(config.log_level)
+        .finish();
 
     let repository_module = gracroverse_server_driver::modules::repositories();
 
